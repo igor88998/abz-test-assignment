@@ -1,0 +1,63 @@
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+
+/* Size styles */
+.button--medium {
+  padding: 4px 0;
+  font-size: var(--font-size-body);
+  border-radius: 80px;
+  width: 100%;
+  min-width: 100px;
+  height: 34px;
+}
+
+/* Type styles */
+.button--primary {
+  background-color: var(--color-primary);
+  border: none;
+}
+
+/* Hover styles */
+.button--primary:hover:not(:disabled) {
+  background-color: var(--color-hover);
+  color: #000000;
+}
+
+/* Disabled styles */
+.button--primary.button--disabled {
+  cursor: not-allowed;
+  background-color: var(--color-disabled);
+  color: #FFFFFF;
+}
+
+/* Loading styles */
+.button--loading {
+  cursor: not-allowed;
+}
+
+.button__loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+
+
+
