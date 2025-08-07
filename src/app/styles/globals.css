@@ -2,7 +2,7 @@
   * {
     font-family: "Nunito", sans-serif;
   }
-  
+
   html {
     font-family: "Nunito", sans-serif;
     font-weight: 400;
@@ -36,19 +36,17 @@
   }
 }
 
-
 :root {
   /* Color Palette */
-  --color-primary: #F4E041;
-  --color-secondary: #00BDD3;
-  --color-background: #F8F8F8;
+  --color-primary: #f4e041;
+  --color-secondary: #00bdd3;
+  --color-background: #f8f8f8;
 
-  --color-hover: #FFE302;
-  --color-disabled: #B4B4B4;
+  --color-hover: #ffe302;
+  --color-disabled: #b4b4b4;
 
-  --color-error: #CB3D40;
+  --color-error: #cb3d40;
 
- 
   /* Typography */
   --font-size-heading-1: 40px;
   --font-weight-heading-1: 400;
@@ -71,5 +69,3 @@
   font-weight: var(--font-weight-body);
   line-height: var(--line-height-body);
 }
-
-

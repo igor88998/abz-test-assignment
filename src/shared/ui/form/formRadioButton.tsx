@@ -5,44 +5,44 @@ import type { RadioButtonProps } from "@/shared/ui/radioButton/radioButton";
 import { RadioButton } from "@/shared/ui/radioButton/radioButton";
 
 interface FormRadioButtonProps
-	extends Omit<RadioButtonProps, "defaultValue">,
-		Omit<UseControllerProps, "render" | "control" | "error" | "defaultValue"> {
-	control: Control<any>;
-	name: string;
-	value: number;
+  extends Omit<RadioButtonProps, "defaultValue">,
+    Omit<UseControllerProps, "render" | "control" | "error" | "defaultValue"> {
+  control: Control<any>;
+  name: string;
+  value: number;
 }
 
 const FormRadioButton: FC<FormRadioButtonProps> = ({
-	control,
-	rules,
-	name,
-	value,
-	onChange,
-	...rest
+  control,
+  rules,
+  name,
+  value,
+  onChange,
+  ...rest
 }) => {
-	return (
-		<Controller
-			control={control}
-			name={name}
-			rules={rules}
-			render={({
-				field: { value: fieldValue, onChange: fieldOnChange, ...field },
-			}) => (
-				<RadioButton
-					{...field}
-					{...rest}
-					value={value}
-					checked={fieldValue === value}
-					onChange={(e) => {
-						fieldOnChange(value);
-						if (onChange) {
-							onChange(e);
-						}
-					}}
-				/>
-			)}
-		/>
-	);
+  return (
+    <Controller
+      control={control}
+      name={name}
+      rules={rules}
+      render={({
+        field: { value: fieldValue, onChange: fieldOnChange, ...field },
+      }) => (
+        <RadioButton
+          {...field}
+          {...rest}
+          value={value}
+          checked={fieldValue === value}
+          onChange={(e) => {
+            fieldOnChange(value);
+            if (onChange) {
+              onChange(e);
+            }
+          }}
+        />
+      )}
+    />
+  );
 };
 
 export default FormRadioButton;

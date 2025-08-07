@@ -4,12 +4,12 @@ import "react-toastify/dist/ReactToastify.css";
 import useFont from "@/shared/fonts/useFonts";
 
 export const UIProvider = ({ children }: { children: ReactNode }) => {
-	useFont();
+  useFont();
 
-	return (
-		<>
-			{children}
-			<ToastContainer position="top-right" autoClose={3000} />
-		</>
-	);
+  return (
+    <>
+      {children}
+      <ToastContainer position="top-right" autoClose={3000} />
+    </>
+  );
 };

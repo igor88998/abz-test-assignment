@@ -1,0 +1,20 @@
+{
+  "plugins": ["@trivago/prettier-plugin-sort-imports"],
+  "importOrder": [
+    "^react$",
+    "^react",
+    "^@/shared/",
+    "^@/entities/",
+    "^@/features/",
+    "^@/widgets/",
+    "^@/pages/",
+    "^@/services/",
+    "^@/store/",
+    "^@/utils/",
+    "^@/config/",
+    "^[^/]+$",
+    "^\\w",
+    "^\\.\\.",
+    "^\\."
+  ]
+}

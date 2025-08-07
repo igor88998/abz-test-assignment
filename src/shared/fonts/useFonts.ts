@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 
 const useFont = () => {
-	useEffect(() => {
-		const style = document.createElement("style");
-		style.innerHTML = `
+  useEffect(() => {
+    const style = document.createElement("style");
+    style.innerHTML = `
       @font-face {
         font-family: 'Nunito';
         src: url('/fonts/Nunito/Nunito-ExtraLight.ttf') format('truetype');
@@ -101,12 +101,12 @@ const useFont = () => {
         font-style: italic;
       }
     `;
-		document.head.appendChild(style);
+    document.head.appendChild(style);
 
-		return () => {
-			document.head.removeChild(style);
-		};
-	}, []);
+    return () => {
+      document.head.removeChild(style);
+    };
+  }, []);
 };
 
 export default useFont;
