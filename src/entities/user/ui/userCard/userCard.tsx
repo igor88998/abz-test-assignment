@@ -16,6 +16,8 @@ export const UserCard: React.FC<UserCardProps> = ({ user }) => {
             src={user.photo}
             alt={user.name}
             className="user-card__avatar-img"
+            loading="lazy"
+            decoding="async"
           />
         ) : (
           <span className="user-card__avatar-fallback">

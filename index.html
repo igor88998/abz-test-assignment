@@ -5,6 +5,80 @@
     <link rel="icon" type="image/svg+xml" href="/logo.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TestTask</title>
+    
+    <!-- Preload critical fonts -->
+    <link rel="preload" href="/fonts/Nunito/Nunito-Regular.ttf" as="font" type="font/ttf" crossorigin>
+    <link rel="preload" href="/fonts/Nunito/Nunito-Medium.ttf" as="font" type="font/ttf" crossorigin>
+    
+    <!-- DNS prefetch for API -->
+    <link rel="dns-prefetch" href="//frontend-test-assignment-api.abz.agency">
+    
+    <!-- Preload hero background image -->
+    <link rel="preload" href="/src/shared/assets/png/hero-background.png" as="image">
+    
+    <!-- Critical CSS inline for above-the-fold content -->
+    <style>
+      /* Critical CSS for initial paint */
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      
+      html {
+        font-family: "Nunito", sans-serif;
+        background: #f8f8f8;
+        color: #000000;
+      }
+      
+      body {
+        font-family: "Nunito", sans-serif;
+        height: 100dvh;
+        width: 100dvw;
+        margin: 0;
+        display: flex;
+      }
+      
+      #root {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        min-height: 100dvh;
+        width: 100%;
+      }
+      
+      /* Critical hero section styles */
+      .hero-section {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      }
+      
+      .hero-section__background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+      
+      .hero-section__content {
+        position: relative;
+        z-index: 2;
+        max-width: 380px;
+        text-align: center;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 32px;
+      }
+    </style>
   </head>
   <body>
     <div id="root"></div>
