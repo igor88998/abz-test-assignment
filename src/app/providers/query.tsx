@@ -5,7 +5,7 @@ function makeQueryClient() {
   return new QueryClient({
     defaultOptions: {
       queries: {
-        staleTime: 60 * 1000, // 1 минута
+        staleTime: 60 * 1000,
         retry: (failureCount, error: any) => {
           if (error?.code === "INVALID_TOKEN") {
             return false;

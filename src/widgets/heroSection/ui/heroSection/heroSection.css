@@ -10,8 +10,8 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-attachment: scroll; /* Mobile optimization */
-  will-change: transform; /* Optimize for mobile rendering */
+  background-attachment: scroll; 
+  will-change: transform;
 }
 
 
@@ -63,8 +63,8 @@
 @media (max-width: 768px) {
   .hero-section {
     height: 500px;
-    background-attachment: scroll; /* Force scroll for mobile */
-    contain: layout style paint; /* Optimize rendering */
+    background-attachment: scroll;
+    contain: layout style paint;
   }
   
   .hero-section__content {
