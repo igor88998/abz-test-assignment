@@ -25,8 +25,29 @@
     
 
   </head>
-  <body>
+    <body>
     <div id="root"></div>
+
+    <!-- Load non-critical CSS asynchronously -->
+    <link rel="preload" href="/src/main.tsx" as="script">
+    <script>
+      // Load CSS asynchronously to avoid render blocking
+      const loadCSS = function(href) {
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = href;
+        link.media = 'print';
+        link.onload = function() { this.media = 'all'; };
+        document.head.appendChild(link);
+      };
+      
+      // Load main CSS after critical content is rendered
+      if (window.requestIdleCallback) {
+        requestIdleCallback(() => loadCSS('/src/index.css'));
+      } else {
+        setTimeout(() => loadCSS('/src/index.css'), 100);
+      }
+    </script>
     
     <script type="module" src="/src/main.tsx"></script>
   </body>

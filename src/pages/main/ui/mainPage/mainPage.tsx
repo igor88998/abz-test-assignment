@@ -5,10 +5,10 @@ import "./mainPage.css";
 
 export const MainPage: React.FC = () => {
   return (
-    <div className="main-page">
+    <main className="main-page">
       <HeroSection />
       <UsersSection />
       <SignUpSection />
-    </div>
+    </main>
   );
 };
