@@ -6,15 +6,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TestTask</title>
     
-    <!-- Preload critical fonts -->
-    <link rel="preload" href="/fonts/Nunito/Nunito-Regular.ttf" as="font" type="font/ttf" crossorigin>
-    <link rel="preload" href="/fonts/Nunito/Nunito-Medium.ttf" as="font" type="font/ttf" crossorigin>
+    <!-- Critical mobile optimization -->
+    <meta name="theme-color" content="#f4e041">
+    <meta name="format-detection" content="telephone=no">
     
-    <!-- DNS prefetch for API -->
+    <!-- Preload critical fonts with priority -->
+    <link rel="preload" href="/fonts/Nunito/Nunito-Regular.ttf" as="font" type="font/ttf" crossorigin fetchpriority="high">
+    
+    <!-- DNS optimization -->
     <link rel="dns-prefetch" href="//frontend-test-assignment-api.abz.agency">
+    <link rel="preconnect" href="https://frontend-test-assignment-api.abz.agency" crossorigin>
     
-    <!-- Preload hero background image -->
-    <link rel="preload" href="/src/shared/assets/png/hero-background.png" as="image">
+    <!-- Responsive hero image preload -->
+    <link rel="preload" href="/src/shared/assets/png/hero-background.png" as="image" media="(min-width: 768px)" fetchpriority="high">
+    <link rel="preload" href="/src/shared/assets/png/hero-background.png" as="image" media="(max-width: 767px)" fetchpriority="high" imagesrcset="/src/shared/assets/png/hero-background.png 1x">
+    
+    <!-- Mobile-specific optimizations -->
+    <link rel="modulepreload" href="/src/main.tsx" media="(min-width: 768px)">
+    <link rel="prefetch" href="/src/shared/assets/svg/logo.svg" media="(max-width: 767px)">
+    
+    <!-- Adaptive loading hints -->
+    <script>
+      // Only preload additional resources on fast connections
+      if (navigator.connection && navigator.connection.effectiveType === '4g') {
+        const prefetchLink = document.createElement('link');
+        prefetchLink.rel = 'prefetch';
+        prefetchLink.href = '/src/widgets/usersSection/index.ts';
+        document.head.appendChild(prefetchLink);
+      }
+    </script>
     
     <!-- Critical CSS inline for above-the-fold content -->
     <style>
@@ -52,10 +72,17 @@
         position: relative;
         width: 100%;
         height: 100vh;
+        min-height: 100svh; /* Safe area for mobile */
         display: flex;
         align-items: center;
         justify-content: center;
         overflow: hidden;
+        background-color: #f8f8f8; /* Fallback color */
+        background-image: url('/src/shared/assets/png/hero-background.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        contain: layout style paint;
       }
       
       .hero-section__background {
@@ -77,11 +104,86 @@
         align-items: center;
         justify-content: center;
         gap: 32px;
+        padding: 0 16px;
+      }
+      
+      /* Mobile-first critical optimizations */
+      @media (max-width: 767px) {
+        .hero-section {
+          height: 100svh;
+          background-attachment: scroll; /* Better performance on mobile */
+        }
+        
+        .hero-section__content {
+          gap: 24px;
+          padding: 0 20px;
+        }
+        
+        .hero-section__title {
+          font-size: 32px !important;
+          line-height: 36px !important;
+        }
+        
+        .hero-section__description {
+          font-size: 14px !important;
+          line-height: 22px !important;
+        }
+      }
+      
+      /* Skeleton loading for LCP element */
+      .hero-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, #f4e041 0%, #00bdd3 100%);
+        opacity: 0;
+        z-index: 1;
+        animation: skeleton-fade 0.3s ease-out;
+      }
+      
+      @keyframes skeleton-fade {
+        0% { opacity: 1; }
+        100% { opacity: 0; }
       }
     </style>
   </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+    
+    <!-- Optimized script loading -->
+    <script>
+      // Detect connection type for mobile optimization
+      const isMobile = window.innerWidth <= 767;
+      const isSlowConnection = navigator.connection && (
+        navigator.connection.effectiveType === 'slow-2g' ||
+        navigator.connection.effectiveType === '2g' ||
+        navigator.connection.effectiveType === '3g'
+      );
+      
+      // Lazy load non-critical resources on mobile
+      if (isMobile || isSlowConnection) {
+        // Defer non-critical script loading
+        setTimeout(() => {
+          const script = document.createElement('script');
+          script.type = 'module';
+          script.src = '/src/main.tsx';
+          document.head.appendChild(script);
+        }, 100);
+      } else {
+        // Load normally for desktop
+        const script = document.createElement('script');
+        script.type = 'module';
+        script.src = '/src/main.tsx';
+        document.head.appendChild(script);
+      }
+    </script>
+    
+    <!-- Fallback for browsers without JavaScript -->
+    <noscript>
+      <script type="module" src="/src/main.tsx"></script>
+    </noscript>
   </body>
 </html>
