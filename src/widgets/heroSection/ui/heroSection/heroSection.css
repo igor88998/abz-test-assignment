@@ -10,6 +10,8 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  background-attachment: scroll; /* Mobile optimization */
+  will-change: transform; /* Optimize for mobile rendering */
 }
 
 
@@ -61,9 +63,16 @@
 @media (max-width: 768px) {
   .hero-section {
     height: 500px;
+    background-attachment: scroll; /* Force scroll for mobile */
+    contain: layout style paint; /* Optimize rendering */
   }
   
   .hero-section__content {
     padding: 0 16px;
+  }
+  
+  .hero-section__title {
+    font-size: 32px;
+    line-height: 32px;
   }
 }

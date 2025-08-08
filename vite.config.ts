@@ -17,14 +17,7 @@ export default defineConfig({
     },
     cssCodeSplit: true,
     minify: "terser",
-    terserOptions: {
-      compress: {
-        drop_console: true,
-        drop_debugger: true,
-        passes: 2,
-      },
-    },
-    target: "es2018", // Better mobile compatibility
+    target: "es2017", // Better mobile compatibility
     chunkSizeWarningLimit: 500,
   },
   optimizeDeps: {
