@@ -1,5 +1,4 @@
 import React from "react";
-import heroBackground from "@/shared/assets/png/hero-background.png";
 import { useScrollTo } from "@/shared/lib";
 import { Button } from "@/shared/ui/button";
 import "./heroSection.css";
@@ -9,10 +8,6 @@ export const HeroSection: React.FC = () => {
 
   return (
     <section className="hero-section">
-      <div
-        className="hero-section__background"
-        style={{ backgroundImage: `url(${heroBackground})` }}
-      />
       <div className="hero-section__content">
         <div className="hero-section__text-content">
           <h1 className="hero-section__title">

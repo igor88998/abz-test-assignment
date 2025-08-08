@@ -10,20 +10,15 @@
     <meta name="theme-color" content="#f4e041">
     <meta name="format-detection" content="telephone=no">
     
-    <!-- Preload critical fonts with priority -->
-    <link rel="preload" href="/fonts/Nunito/Nunito-Regular.ttf" as="font" type="font/ttf" crossorigin fetchpriority="high">
+    <!-- Critical LCP Image Preload - HIGHEST PRIORITY -->
+    <link rel="preload" href="/src/shared/assets/png/hero-background.png" as="image" fetchpriority="high">
+    
+    <!-- Preload critical fonts -->
+    <link rel="preload" href="/fonts/Nunito/Nunito-Regular.ttf" as="font" type="font/ttf" crossorigin>
     
     <!-- DNS optimization -->
     <link rel="dns-prefetch" href="//frontend-test-assignment-api.abz.agency">
     <link rel="preconnect" href="https://frontend-test-assignment-api.abz.agency" crossorigin>
-    
-    <!-- Responsive hero image preload -->
-    <link rel="preload" href="/src/shared/assets/png/hero-background.png" as="image" media="(min-width: 768px)" fetchpriority="high">
-    <link rel="preload" href="/src/shared/assets/png/hero-background.png" as="image" media="(max-width: 767px)" fetchpriority="high" imagesrcset="/src/shared/assets/png/hero-background.png 1x">
-    
-    <!-- Mobile-specific optimizations -->
-    <link rel="modulepreload" href="/src/main.tsx" media="(min-width: 768px)">
-    <link rel="prefetch" href="/src/shared/assets/svg/logo.svg" media="(max-width: 767px)">
     
     <!-- Adaptive loading hints -->
     
